@@ -33,17 +33,15 @@ app.use(session({
 require('./config/database.js');
 
 app.use(cookieParser('secret'));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-require('./routes/index.js')(app); // This is the api route
 
 app.use(csrf());
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-const router = express.Router();
-
+require('./routes/index.js')(app); // This is the api route
 console.log(process.env.NODE_ENV);
 const server = app.listen(app.get('port'), function(){
 	console.log('Listening on port ', app.get('port'));
