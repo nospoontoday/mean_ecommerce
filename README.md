@@ -13,3 +13,4 @@ A simple e-commerce web application
 3. npm install (both in api folder and frontend folder)
 4. node app.js (in api folder)
 5. ng serve (in frontend folder)
+6. visit localhost:4200
