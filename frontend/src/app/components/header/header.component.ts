@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   cartView() {
-    console.log("Car View");
+    console.log("Cart View");
   }
 
 }

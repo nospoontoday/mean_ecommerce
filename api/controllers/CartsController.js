@@ -6,9 +6,7 @@ module.exports = (function(){
 	return {
 		post: async function(request, response){
             // make sure the product exists.
-            // @TODO: Supply findOne with request.body.productId
-            let product = await Product.findOne({}).exec();
-            // console.log(product);
+            let product = await Product.findById(request.body.product_id).exec();
 
             if( product == null || ! product._id instanceof mongoose.Types.ObjectId) {
                 return response.json({"error": "Product does not exist"});
@@ -19,16 +17,15 @@ module.exports = (function(){
                 return response.json({"error": "We only have " + product.quantity + " left for the product " + product.name});
             }
 
-            // @TODO: Supply findByIdAndUpdate with request.body.cartId
-            Cart.findByIdAndUpdate({_id: "5db6b26730f133b65dbbe459"}, { 
+            Cart.findByIdAndUpdate({session_id: request.sessionID}, { 
                 $push:
                 {
                     "products":
                     {
                         product_id: product._id, 
                         quantity: request.body.quantity,
-                        name: request.body.productName,
-                        price: request.body.productPrice
+                        name: request.body.name,
+                        price: request.body.price
                     }
                 }
             }, 

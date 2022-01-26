@@ -2,4 +2,9 @@
     <h6>{{ product.name }}</h6>
     <p><strong>Price: </strong>${{ product.price }}</p>
     <p><strong>Stock: </strong> {{ product.quantity }} </p>
+    <app-add-to-cart 
+        text="Add to Cart" 
+        [product]="product"
+        (onAddToCart)=addToCart($event)
+    ></app-add-to-cart>
 </div>

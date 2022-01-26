@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const cartSchema = new mongoose.Schema({
+    session_id: {type: String, required: true },
     products: [{
         product_id: {type: Schema.Types.ObjectId, ref: 'Product'},
         price: {type: Number, require: true},

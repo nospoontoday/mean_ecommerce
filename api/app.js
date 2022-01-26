@@ -1,18 +1,19 @@
 'use strict';
 
 const express = require('express');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 const session = require('express-session');
-const csrf = require('csurf');
+// const csrf = require('csurf');
 const morgan   = require('morgan');                // log requests to the console (express4)
 // var Config = require('./app/config/config.js');
 const Constants = require('./config/constants.js');
 // var conf =  new Config();
 const constants = new Constants();
 const app = express();
-
+app.use(cors());
 app.use('/static', express.static(__dirname + '/resources'));
 
 app.use(morgan('dev'));
@@ -37,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.use(csrf());
+// app.use(csrf({ cookie: true}));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');

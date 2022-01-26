@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Product } from '../models/Product';
-import { products } from '../mock-products';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    console.log(this.http.get<Product[]>(this.apiUrl));
     return this.http.get<Product[]>(this.apiUrl);
   }
 }

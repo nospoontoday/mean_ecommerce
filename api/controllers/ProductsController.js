@@ -9,8 +9,9 @@ module.exports = (function(){
 
 		get: function(request, response) {
 			Product.find({}).then((products) => {
-				response.header("Access-Control-Allow-Origin", "http://localhost:4200"); // update to match the domain you will make the request from
-				response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+				// response.header("Access-Control-Allow-Origin", "http://localhost:4200"); // update to match the domain you will make the request from
+				// response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+				// response.cookie('XSRF-TOKEN', request.csrfToken(), { httpOnly: false });
 				return response.json(products);
 			});
 			//database process here
