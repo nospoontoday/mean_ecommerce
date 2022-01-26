@@ -5,7 +5,7 @@ module.exports = function(){
 				'redisPort': 6379,
 				'redisHost': '127.0.0.1',
 				'redisPassword': '',
-				'mongodbHost': 'mongodb://localhost/kwits',
+				'mongodbHost': 'mongodb://localhost:27017/myapp',
 				'port': 8080
 			}
 		case 'production':
